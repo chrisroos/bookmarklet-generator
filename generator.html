@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+  <head>
+    <title></title>
+    <script type="text/javascript">
+      function generateBookmarklet() {
+        var bookmarkletLength = document.getElementById('bookmarkletLength').value;
+        
+        var hrefPrefix = "javascript:alert('";
+        var hrefSuffix = "');";
+        var href       = "";
+        do {
+          href += 'a';
+        } while((hrefPrefix + href + hrefSuffix).length < bookmarkletLength);
+
+        var bookmarkletHref = hrefPrefix + href + hrefSuffix;
+        document.getElementById('generatedBookmarkletHref').innerText = bookmarkletHref;
+        document.getElementById('generatedBookmarkletLength').innerText = bookmarkletHref.length;
+        
+        var anchor = document.createElement('a');
+        anchor.href = bookmarkletHref;
+        anchor.appendChild(document.createTextNode('bookmarklet'));
+        document.getElementById('bookmarklet').innerText = '';
+        document.getElementById('bookmarklet').appendChild(anchor);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Bookmarklet length test</h1>
+    
+    <p>I wrote this crappy little script to test the maximum length of a bookmarklet in IE6, specifically after some feedback about my <a href="http://chrisroos.co.uk/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7">bookmarklet post from a few years ago</a>.</p>
+    <p>Use it to generate a bookmarklet of a specific length to test the capability of a given browser.  For example, generating a bookmarklet of 509 characters in length won't work in IE6.</p>
+    
+    <form id="bookmarkletGenerator" action="#">
+      <div>
+        <label for="bookmarkletLength">Bookmarklet length</label>
+        <input id="bookmarkletLength" type="text" value="508">
+      </div>
+      <div>
+        <input type="submit" onclick="generateBookmarklet(); return false;">
+      </div>
+    </form>
+    
+    <h2>Generated bookmarklet</h2>
+    <pre id="generatedBookmarkletHref"></pre>
+    
+    <h2>Length of generated bookmarklet</h2>
+    <p id="generatedBookmarkletLength"></p>
+    
+    <h2>Bookmarklet</h2>
+    <p id="bookmarklet"></p>
+  </body>
+</html>

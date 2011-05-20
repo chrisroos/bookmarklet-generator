@@ -1,0 +1,3 @@
+## Intro
+
+I wrote a post about investigating the [maximum length of bookmarklets in 2007](http://chrisroos.co.uk/blog/2007-12-14-bookmarklet-favelet-limits-in-internet-explorer-6-and-7).  I recently received an email explaining the 505/508 character discrepancy in that post.  In re-visiting the post I realised that my test wasn't exactly as scientific/simple as it could be so I created this crappy little html/javascript thing to generate bookmarklets of specific sizes.  I could use these generated bookmarklets to more accurately test the limits in IE.
